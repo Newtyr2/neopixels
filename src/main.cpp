@@ -42,21 +42,19 @@ void bar(int variable){
 
   int minValue = 0;
   int maxValue = 1023;
-  int partial = 0;
+  float partial = 0;
 
   int barHeight = map(variable, minValue, maxValue, 0, LED_COUNT_1 / 2);
   barHeight = constrain(barHeight, 0, LED_COUNT_1 / 2);
-
-  partial = 1023 % 8;  // brightness of the next led will be partial / 255 
+  
+  partial = variable / 8;
 
   for (int i = 0; i < barHeight; i++)
   {
   int ledIndex = (LED_COUNT_1 - 1) - i;   // bottom (7) -> top (0)
   strip1.setPixelColor(ledIndex, 0, 255, 0);
-  while (partial != 0)
-   {
-    strip1.setPixelColor(ledIndex = 1, 0, partial / 255, 0);
-   }
+  if (int(partial) != partial)
+    strip1.setPixelColor(ledIndex + 1, 0, (partial - int(partial)) * 255, 0);
   }
 
 
