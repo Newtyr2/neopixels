@@ -9,7 +9,7 @@
 
 #define LED_COUNT_2 7
 
-// hi
+// 
 
 Adafruit_NeoPixel strip1(LED_COUNT_1, LED_PIN_1, NEO_GRB + NEO_KHZ800);
 
@@ -57,9 +57,47 @@ void bar(int variable){
     strip1.setPixelColor(ledIndex + 1, 0, (partial - int(partial)) * 255, 0);
   }
 
-
   strip1.show();
 
+}
+// idle
+void showAll()
+{
+  strip1.show();
+  strip2.show();
+  strip3.show();
+  // strip4.show();
+  // strip5.show();
+}
+
+void idle()
+{
+  strip1.clear();
+  strip2.clear();
+  strip3.clear();
+  // strip4.clear();
+  // strip5.clear();
+  showAll();
+  }
+
+void precharge()
+{
+  strip1.fill(strip1.Color(255, 255, 0));
+  strip2.fill(strip2.Color(255, 255, 0));
+  strip3.fill(strip3.Color(255, 255, 0));
+  // strip4.fill(strip4.Color(255, 255, 0));
+  // strip5.fill(strip5.Color(255, 255, 0));
+  showAll();
+}
+
+void drive()
+{
+  strip1.fill(strip1.Color(0, 255, 0));
+  strip2.fill(strip2.Color(0, 255, 0));
+  strip3.fill(strip3.Color(0, 255, 0));
+  // strip4.fill(strip4.Color(0, 255, 0));
+  // strip5.fill(strip5.Color(0, 255, 0));
+  showAll();
 }
 
 void loop() {
@@ -69,7 +107,6 @@ void loop() {
   {
     strip1.setPixelColor(i, i*20, 10, 10);
   }
-
   strip1.show(); 
   // delay(25); 
   // strip.setPixelColor(0,0,0,0);
