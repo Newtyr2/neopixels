@@ -5,15 +5,10 @@ using namespace std;
 //#include <iostream>
 
 
-vector<vector<int>> mapping = {{8, 9, 10, 11, 12, 13, 14, 15}, {7, 6, 5, 4, 3, 2, 1, 0}, {0, 1, 2, 3, 4, 5, 6}};
-
-struct Lights{
-    
-
-};
+vector<int> mapping = {8, 9, 10, 11, 12, 13, 14, 15 , 7, 6, 5, 4, 3, 2, 1, 0, 0, 1, 2, 3, 4, 5, 6, 7, 6, 5, 4, 3, 2, 1, 0, 8, 9, 10, 11, 12, 13, 14, 15};
 
 struct Bar{
-    vector<Lights> l;
+    vector<int> l;
 };
 
 class Neopixels {
