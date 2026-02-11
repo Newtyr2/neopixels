@@ -40,16 +40,24 @@ void setup() {
 void bar(int variable){
   // This shows a bar that grows in size in relation to a variable 
 
-  int minValue = 0; //placeholder
-  int maxValue = 1023; //placeholder
-  int barHeight = map(variable, minValue, maxValue, 0, 0.5*LED_COUNT_1);
-  barHeight = constrain(barHeight, 0, LED_COUNT_1);
+  int minValue = 0;
+  int maxValue = 1023;
+  float partial = 0;
 
-  for (int i = barHeight; i > 0; i--)
+  int barHeight = map(variable, minValue, maxValue, 0, LED_COUNT_1 / 2);
+  barHeight = constrain(barHeight, 0, LED_COUNT_1 / 2);
+  
+  partial = variable / 8;
+
+  for (int i = 0; i < barHeight; i++)
   {
-    strip1.setPixelColor(i, 0, 255, 0);
+  int ledIndex = (LED_COUNT_1 - 1) - i;   // bottom (7) -> top (0)
+  strip1.setPixelColor(ledIndex, 0, 255, 0);
+  if (int(partial) != partial)
+    strip1.setPixelColor(ledIndex + 1, 0, (partial - int(partial)) * 255, 0);
   }
- 
+
+
   strip1.show();
 
 }
@@ -69,32 +77,16 @@ void loop() {
   delay(1000);
   strip1.clear();
  
-  int variable = 512;
-  delay(1000);
-  bar(variable);
-
   int variable = 0;
-  delay(1000);
-  bar(variable);
+  while (variable < 1023)
+  {
+    variable += 100;
+    bar(variable);
+    delay(500);
+  }
+  
 
-  int variable = 700;
-  delay(1000);
-  bar(variable);
-
-  int variable = 6;
-  delay(1000);
-  bar(variable);
-
-  int variable = 200;
-  delay(1000);
-  bar(variable);
-
-  int variable = 1023;
-  delay(1000);
-  bar(variable);
-
-  */
-
+  /* 
   for (int i = 0; i < LED_COUNT_2; i++)
   {
     strip2.setPixelColor(i, i*20, 10, 10);
@@ -110,5 +102,7 @@ void loop() {
   strip3.show(); 
 
   printf("Hello World \n");
+
+  */
 }
 
