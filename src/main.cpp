@@ -37,6 +37,34 @@ void setup() {
   strip3.setBrightness(50);
 }
 
+/* void progress bar(int variable)
+
+// This shows a bar that grows in size in relation to a variable. Occurs on strip 0.
+
+  int minValue = 0;
+  int maxValue = 1023; // or whatever the max of the variable is, can be adjusted idk
+
+  float scaledValue = (float)(variable - minValue) / (maxValue - minValue) * 8.0;
+  scaledValue = constrain(scaledValue, 0, 8);
+
+  int barHeight = (int)scaledValue;
+  float fraction = scaledValue - barHeight;
+
+  // Clear strip first
+  strip0.clear();
+
+  for (int i = 0; i < barHeight; i++) {
+    strip0.setPixelColor(i, 0, 255, 0);
+  }
+
+  if (barHeight < 8 && fraction > 0) {
+    uint8_t brightness = fraction * 255;
+    strip1.setPixelColor(barHeight, 0, brightness, 0);
+  }
+
+  strip0.show();
+*/
+
 void bar(int variable){
   // This shows a bar that grows in size in relation to a variable 
 

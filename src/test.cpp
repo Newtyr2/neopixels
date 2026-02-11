@@ -22,9 +22,6 @@ struct Bar{
 class Neopixels {
     array<Bar, 5> bars;
 
-    int rightIndex(int bar, int index){
-        return mapping[bar*8 + index];
-    }
 };
 
 
