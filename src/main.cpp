@@ -37,6 +37,25 @@ void setup() {
   strip3.setBrightness(50);
 }
 
+void tick()
+{
+  uint32_t animStart = anim.start;
+  uint32_t animEnd   = anim.end;
+  uint32_t now = millis();
+  float t = (float)(now - animStart) / (float)(animEnd - animStart);
+  if (t >= 1.0f) {
+    t = 1.0f;
+  }
+
+  anim.update(t);
+
+
+  // is animation active
+  if (t >= 1.0f) {
+    anim.active = false;
+  }
+}
+
 /* void progress bar(int variable)
 
 // This shows a bar that grows in size in relation to a variable. Occurs on strip 0.
@@ -168,6 +187,14 @@ void loop() {
 
   printf("Hello World \n");
 
+  */
+
+
+  /*
+  void barHeight(uint16_t variable)
+  {
+    
+  
   */
 }
 
